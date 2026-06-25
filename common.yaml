@@ -16,12 +16,20 @@ spec:
       - name: lumen-project
         image: ashraf514/lumen-demo:latest
         env:
-          - name: APP_ENV
-            value: "production"
+        # fetch value from the config.yaml (which contain less sensitive info)
+          - name: APP_NAME
+            valueFrom: 
+              configMapKeyref: 
+                name: app-config
+                key: APP_NAME
+        # fetch value from the secret.yaml (which contain more sensitive info)
+          - name: DB_PASSWORD
+            valueFrom: 
+              secretKeyRef:
+                name: secret-var
+                key: DB_PASSWORD
           - name: LOG_CHANNEL
             value: "database"
-          - name: DB_PASSWORD
-            value: "abc@123"
         ports:
         - containerPort: 8001
 ---
