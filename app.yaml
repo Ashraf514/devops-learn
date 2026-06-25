@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lumen-project
+spec: 
+  replicas: 2
+  selector: 
+    matchLabels: 
+      app: lumenProjectL
+  template:
+    metadata:
+      labels:
+        app: lumenProjectL
+    spec: 
+      containers:
+      - name: lumen-project
+        image: ashraf514/lumen-demo:latest
+        ports:
+        - containerPort: 8001

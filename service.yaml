@@ -1,0 +1,16 @@
+apiVersion: v1
+# Service for exposing the Lumen application
+kind: Service
+metadata:
+  # service name
+  name: lumen-project-service
+spec:
+  selector:
+    # Match pods labled app=lumenProjectL in app.yaml
+    app: lumenProjectL
+  #type of service to run in the browser
+  type: NodePort
+  ports:
+  - port: 8001
+    targetPort: 8001
+    nodePort: 32000
