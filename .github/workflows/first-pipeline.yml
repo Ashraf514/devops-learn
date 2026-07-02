@@ -14,6 +14,10 @@ jobs:
         run: echo "Hello this is the first pipeline!"
       
       - name: Run a multi-line script
-        run:
+        run: |
           echo "Hello this is the other step"
           echo "Test and deploy the project"
+      - name: check for listing
+        run: |
+          ls
+          ls -l
