@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: lumen-project
 spec: 
-  replicas: 2
+  replicas: 1
   selector: 
     matchLabels: 
       app: lumenProjectL
@@ -19,14 +19,14 @@ spec:
         # fetch value from the config.yaml (which contain less sensitive info)
           - name: APP_NAME
             valueFrom: 
-              configMapKeyref: 
+              configMapKeyRef: 
                 name: app-config
                 key: APP_NAME
         # fetch value from the secret.yaml (which contain more sensitive info)
           - name: DB_PASSWORD
             valueFrom: 
               secretKeyRef:
-                name: secret-var
+                name: secret-vars
                 key: DB_PASSWORD
           - name: LOG_CHANNEL
             value: "database"

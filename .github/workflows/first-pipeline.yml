@@ -1,0 +1,19 @@
+name: First CI
+on:
+  push:
+    branches: ["yaml-env"]
+  
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Say Hello
+        run: echo "Hello this is the first pipeline!"
+      
+      - name: Run a multi-line script
+        run:
+          echo "Hello this is the other step"
+          echo "Test and deploy the project"
