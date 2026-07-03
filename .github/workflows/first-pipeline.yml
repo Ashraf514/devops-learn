@@ -43,5 +43,6 @@ jobs:
     steps:
       - name: Run a multi-line script
         run: |
-          echo "Test Job"
+          echo "Test Job by ${{github.actor}}"
           echo "Used to run tests via pipeline"
+        #github.actor will is a context object which will return the name of the user github is logged in
