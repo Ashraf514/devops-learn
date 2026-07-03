@@ -17,7 +17,11 @@ jobs:
         run: |
           echo "Hello this is the other step"
           echo "Test and deploy the project"
-      - name: check for listing
+      - name: Check directory list
         run: |
-          ls
           ls -l
+      - name: Set and test ENV
+        env: 
+          APP_ENV: "Development" # non sensitive information
+          DB_PASSWORD: ${{secrets.DB_PASSWORD}} # Sensitive info can't be written directly. Access it from github actions secrets.
+        run: echo "The APP_ENV is $APP_ENV and the DB_PASSWORD is $DB_PASSWORD"
