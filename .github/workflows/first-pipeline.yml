@@ -25,3 +25,15 @@ jobs:
           APP_ENV: "Development" # non sensitive information
           DB_PASSWORD: ${{secrets.DB_PASSWORD}} # Sensitive info can't be written directly. Access it from github actions secrets.
         run: echo "The APP_ENV is $APP_ENV and the DB_PASSWORD is $DB_PASSWORD"
+      - name: Create demo file
+        run: |
+          echo "Hello from CI/CD" > demo.txt
+          echo "file created successfully"
+          
+      - name: Upload artifact Demo
+        uses: actions/upload-artifact@v4
+        with:
+          name:
+            build-artifact-demo
+          path:
+            .
