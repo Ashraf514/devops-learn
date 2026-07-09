@@ -1,7 +1,7 @@
 name: First CI
 on:
-  push:
-    branches: ["yaml-env"]
+  # push:
+  #   branches: ["yaml-env"]
   
   workflow_dispatch:
 
