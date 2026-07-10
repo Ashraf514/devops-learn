@@ -64,9 +64,9 @@ jobs:
         
       - name: Deploy kubernetes
         run: |
+          kubectl apply -f common.yaml
           kubectl set image deployment/lumen-app \
           lumen-app=${{ secrets.DOCKER_USERNAME }}/lumen-app:${{ github.sha }}
-          kubectl apply -f common.yaml
 
 
       
