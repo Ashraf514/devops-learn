@@ -8,5 +8,8 @@ RUN composer install --no-dev --optimize-autoloader
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-EXPOSE 8001
-CMD [ "php", "-S","0.0.0.0:8001","-t","public" ]
+# EXPOSE 8001
+# CMD [ "php", "-S","0.0.0.0:8001","-t","public" ]
+EXPOSE 80
+
+CMD ["sh", "-c", "php-fpm -D && nginx -g 'daemon off;'"]
